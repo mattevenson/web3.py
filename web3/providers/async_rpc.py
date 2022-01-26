@@ -200,3 +200,11 @@ class BatchedAsyncHTTPProvider(AsyncHTTPProvider):
         )
 
         return response
+
+
+class BatchedAsyncHTTPMulticallProvider(BatchedAsyncHTTPProvider):
+    def __init__(*args, multicall_contract_address, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def dispatch_requests(self) -> None:
+        raise NotImplementedError
